@@ -11,7 +11,7 @@ import { ToppingsService } from '../../services/toppings.service';
   selector: 'product-item',
   styleUrls: ['product-item.component.scss'],
   template: `
-    <div 
+    <div
       class="product-item">
       <pizza-form
         [pizza]="pizza"
@@ -25,7 +25,7 @@ import { ToppingsService } from '../../services/toppings.service';
         </pizza-display>
       </pizza-form>
     </div>
-  `,
+  `
 })
 export class ProductItemComponent implements OnInit {
   pizza: Pizza;
@@ -46,7 +46,7 @@ export class ProductItemComponent implements OnInit {
       if (param === 'new') {
         pizza = {};
       } else {
-        pizza = pizzas.find(pizza => pizza.id == parseInt(param, 10));
+        pizza = pizzas.find(p => p.id === parseInt(param, 10));
       }
       this.pizza = pizza;
       this.toppingsService.getToppings().subscribe(toppings => {
@@ -59,9 +59,7 @@ export class ProductItemComponent implements OnInit {
   onSelect(event: number[]) {
     let toppings;
     if (this.toppings && this.toppings.length) {
-      toppings = event.map(id =>
-        this.toppings.find(topping => topping.id === id)
-      );
+      toppings = event.map(id => this.toppings.find(topping => topping.id === id));
     } else {
       toppings = this.pizza.toppings;
     }
