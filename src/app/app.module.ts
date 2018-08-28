@@ -15,7 +15,7 @@ const environment = {
   development: true,
   production: false
 };
-
+// applies to all the reducers -- meta reducer
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze] : [];
 
 // bootstrap
