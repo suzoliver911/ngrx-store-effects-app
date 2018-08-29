@@ -52,13 +52,18 @@ export class ProductItemComponent implements OnInit {
   onSelect(event: number[]) {
     this.store.dispatch(new fromStore.VisualiseToppings(event));
   }
-  onCreate(event: Pizza) {}
+  onCreate(event: Pizza) {
+    //TODO add on create
+  }
 
-  onUpdate(event: Pizza) {}
+  onUpdate(event: Pizza) {
+    // TODO: add onUpdate
+  }
 
   onRemove(event: Pizza) {
     const remove = window.confirm('Are you sure?');
     if (remove) {
+      //TODO: add remove here
     }
   }
 }
