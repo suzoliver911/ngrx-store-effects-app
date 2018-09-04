@@ -39,9 +39,9 @@ export function reducer(
       // flatten array to entities
       // TODO create help function mapToEntity
       const entities = toppings.reduce(
-        (e: { [id: number]: Topping }, topping: Topping) => {
+        (ent: { [id: number]: Topping }, topping: Topping) => {
           return {
-            ...e,
+            ...ent,
             [topping.id]: topping
           };
         },

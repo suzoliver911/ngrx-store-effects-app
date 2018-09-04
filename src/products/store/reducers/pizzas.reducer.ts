@@ -16,7 +16,7 @@ export const initialState: PizzaState = {
 
 export function reducer(
   state = initialState,
-  action: fromPizzas.PizzaAction
+  action: fromPizzas.PizzasAction
 ): PizzaState {
   switch (action.type) {
     case fromPizzas.LOAD_PIZZAS: {
@@ -30,9 +30,9 @@ export function reducer(
 
       // flatten array to entities
       const entities = pizzas.reduce(
-        (e: { [id: number]: Pizza }, pizza: Pizza) => {
+        (ent: { [id: number]: Pizza }, pizza: Pizza) => {
           return {
-            ...e,
+            ...ent,
             [pizza.id]: pizza
           };
         },

@@ -15,7 +15,7 @@ import { Topping } from '../../models/topping.model';
     <div
       class="product-item">
       <pizza-form
-        [pizza]="pizzaS | async"
+        [pizza]="pizza$ | async"
         [toppings]="toppings$ | async"
         (selected)="onSelect($event)"
         (create)="onCreate($event)"
@@ -52,18 +52,19 @@ export class ProductItemComponent implements OnInit {
   onSelect(event: number[]) {
     this.store.dispatch(new fromStore.VisualiseToppings(event));
   }
+
   onCreate(event: Pizza) {
-    //TODO add on create
+    //TODO: add onCreate
   }
 
   onUpdate(event: Pizza) {
-    // TODO: add onUpdate
+    //TODO: add on Update
   }
 
   onRemove(event: Pizza) {
     const remove = window.confirm('Are you sure?');
     if (remove) {
-      //TODO: add remove here
+      //TODO: Remove logic
     }
   }
 }

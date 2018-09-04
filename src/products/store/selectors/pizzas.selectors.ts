@@ -19,8 +19,8 @@ export const getPizzasEntities = createSelector(
 );
 
 export const getSelectedPizza = createSelector(
-  getPizzasEntities, // feature state
-  fromRoot.getRouterState, // root state
+  getPizzasEntities,
+  fromRoot.getRouterState,
   (entities, router): Pizza => {
     return router.state && entities[router.state.params.pizzaId];
   } // composing new state

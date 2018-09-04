@@ -20,4 +20,4 @@ export class LoadPizzasSuccess implements Action {
 }
 
 // action types (used by reducers)
-export type PizzaAction = LoadPizzas | LoadPizzasFail | LoadPizzasSuccess;
+export type PizzasAction = LoadPizzas | LoadPizzasFail | LoadPizzasSuccess;
