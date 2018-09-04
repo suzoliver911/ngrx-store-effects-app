@@ -54,17 +54,17 @@ export class ProductItemComponent implements OnInit {
   }
 
   onCreate(event: Pizza) {
-    //TODO: add onCreate
+    this.store.dispatch(new fromStore.CreatePizza(event));
   }
 
   onUpdate(event: Pizza) {
-    //TODO: add on Update
+    this.store.dispatch(new fromStore.UpdatePizza(event));
   }
 
   onRemove(event: Pizza) {
     const remove = window.confirm('Are you sure?');
     if (remove) {
-      //TODO: Remove logic
+      this.store.dispatch(new fromStore.RemovePizza(event));
     }
   }
 }

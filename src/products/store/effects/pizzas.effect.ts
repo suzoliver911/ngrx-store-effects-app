@@ -22,4 +22,39 @@ export class PizzasEffects {
       );
     })
   );
+
+  @Effect()
+  createPizza$ = this.actions$.ofType(pizzaActions.CREATE_PIZZA).pipe(
+    map((action: pizzaActions.CreatePizza) => action.payload),
+    switchMap(pizza => {
+      return this.pizzaService.createPizza(pizza).pipe(
+        map(p => new pizzaActions.CreatePizzaSuccess(p)),
+        catchError(error => of(new pizzaActions.CreatePizzaFail(error)))
+      );
+    })
+  );
+
+  @Effect()
+  updatePizza$ = this.actions$.ofType(pizzaActions.UPDATE_PIZZA).pipe(
+    map((action: pizzaActions.UpdatePizza) => action.payload),
+    switchMap(pizza => {
+      return this.pizzaService.updatePizza(pizza).pipe(
+        map(p => new pizzaActions.UpdatePizzaSuccess(p)),
+        catchError(error => of(new pizzaActions.UpdatePizzaFail(error)))
+      );
+    })
+  );
+
+  @Effect()
+  removePizza$ = this.actions$.ofType(pizzaActions.REMOVE_PIZZA).pipe(
+    map((action: pizzaActions.RemovePizza) => action.payload),
+    switchMap(pizza => {
+      return this.pizzaService.removePizza(pizza).pipe(
+        // On remove the API does not typically return the object that was removed
+        // use the object from the switchMap since it is still in scope
+        map(() => new pizzaActions.RemovePizzaSuccess(pizza)),
+        catchError(error => of(new pizzaActions.RemovePizzaFail(error)))
+      );
+    })
+  );
 }
